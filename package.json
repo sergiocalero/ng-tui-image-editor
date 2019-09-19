@@ -7,7 +7,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postInstall": "npm install --no-save --no-optional fabric@^1.6.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiocalero/ng-tui-image-editor.git"
   },
   "private": true,
   "dependencies": {
@@ -19,8 +24,10 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "fabric": "^3.4.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "tui-image-editor": "^3.7.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
