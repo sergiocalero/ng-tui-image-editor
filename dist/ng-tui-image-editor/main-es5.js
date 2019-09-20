@@ -30,7 +30,18 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<button (click)=\"loadImageEditor()\">Load Photo Editor</button>\n<div id=\"tui-image-editor-container\"></div>\n"
+module.exports = "<!--\n<button (click)=\"loadImageEditor()\">Load Photo Editor</button>\n<div id=\"tui-image-editor-container\"></div>\n-->\n\n<app-ng-image-filter></app-ng-image-filter>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/ng-image-filter/ng-image-filter.component.html":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/ng-image-filter/ng-image-filter.component.html ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<button (click)=\"loadImageFilter()\">Load Image Filter</button>\n<img [src]=\"imgPath\" id=\"original\" title=\"{{imgTitle}}\" />\n<img id=\"target\" />\n"
 
 /***/ }),
 
@@ -191,6 +202,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _ng_image_filter_ng_image_filter_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ng-image-filter/ng-image-filter.component */ "./src/app/ng-image-filter/ng-image-filter.component.ts");
+
 
 
 
@@ -201,7 +214,8 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+                _ng_image_filter_ng_image_filter_component__WEBPACK_IMPORTED_MODULE_4__["NgImageFilterComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]
@@ -211,6 +225,70 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/ng-image-filter/ng-image-filter.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/ng-image-filter/ng-image-filter.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL25nLWltYWdlLWZpbHRlci9uZy1pbWFnZS1maWx0ZXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/ng-image-filter/ng-image-filter.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/ng-image-filter/ng-image-filter.component.ts ***!
+  \**************************************************************/
+/*! exports provided: NgImageFilterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgImageFilterComponent", function() { return NgImageFilterComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var jimp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jimp */ "./node_modules/jimp/browser/lib/jimp.js");
+/* harmony import */ var jimp__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jimp__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+var NgImageFilterComponent = /** @class */ (function () {
+    function NgImageFilterComponent() {
+    }
+    NgImageFilterComponent.prototype.ngOnInit = function () {
+        this.imgPath = 'assets/gorgonia.jpg';
+        this.imgTitle = 'Gorgonia';
+    };
+    NgImageFilterComponent.prototype.loadImageFilter = function () {
+        jimp__WEBPACK_IMPORTED_MODULE_2___default.a.read('http://localhost:4200/assets/gorgonia.jpg')
+            .then(function (image) {
+            // Do stuff with the image.
+            return image
+                .resize(256, 256) // resize
+                .quality(60) // set JPEG quality
+                .greyscale() // set greyscale
+                .write('gorgonia-small-bw.jpg'); // save
+        })
+            .catch(function (err) {
+            // Handle an exception.
+            console.error(err);
+        });
+    };
+    NgImageFilterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-ng-image-filter',
+            template: __webpack_require__(/*! raw-loader!./ng-image-filter.component.html */ "./node_modules/raw-loader/index.js!./src/app/ng-image-filter/ng-image-filter.component.html"),
+            styles: [__webpack_require__(/*! ./ng-image-filter.component.css */ "./src/app/ng-image-filter/ng-image-filter.component.css")]
+        })
+    ], NgImageFilterComponent);
+    return NgImageFilterComponent;
 }());
 
 
