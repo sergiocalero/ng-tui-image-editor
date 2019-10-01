@@ -1,20 +1,22 @@
 <div class="container">
     <h1>Parámetros</h1>
-    <form>
+    <form class="col-xs-12">
       <div class="form-group">
         <label for="width">Width</label>
         <input type="text" class="form-control" id="width"
                required [(ngModel)]="target.width" name="width" #width="ngModel">
       </div>
 
-      <button (click)="applyFilter()">Apply Filter</button>
-
       <div class="form-group">
+        <button (click)="applyFilter()">Apply Filter</button>
+      </div>
+
+      <div class="form-group col-xs-6">
         <label for="original">Original image</label>
         <img [src]="imgPath" width="500" id="original" title="{{imgTitle}}" />
       </div>
 
-      <div class="form-group" *ngIf="target.processed">
+      <div class="form-group col-xs-6" *ngIf="target.processed">
         <label for="targetImage">Target image</label>
         <img id="targetImage" [src]="targetImageB64" />
       </div>
